@@ -93,6 +93,53 @@ window.addEventListener('load', updateFocus);
 
 
 /* =========================
+   SMART READING MODE (AUTO WAKE LOCK)
+========================= */
+let wakeLock = null;
+let readingTimer = null;
+
+async function requestWakeLock() {
+    try {
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+        if ('wakeLock' in navigator && !wakeLock && isStandalone) {
+            wakeLock = await navigator.wakeLock.request('screen');
+            console.log('WakeLock active (Standalone Mode)');
+        }
+    } catch (err) {
+        console.log('WakeLock error:', err);
+    }
+}
+
+async function releaseWakeLock() {
+    if (wakeLock) {
+        await wakeLock.release();
+        wakeLock = null;
+        console.log('WakeLock released');
+    }
+}
+
+function resetReadingTimer() {
+    // saat user scroll → release dulu
+    releaseWakeLock();
+
+    // reset timer
+    if (readingTimer) {
+        clearTimeout(readingTimer);
+    }
+
+    // jika tidak scroll selama 3 detik → aktifkan wake lock
+    readingTimer = setTimeout(() => {
+        requestWakeLock();
+    }, 3000);
+}
+
+window.addEventListener('scroll', resetReadingTimer);
+window.addEventListener('touchmove', resetReadingTimer);
+window.addEventListener('load', resetReadingTimer);
+
+
+/* =========================
    SERVICE WORKER
 ========================= */
 if ('serviceWorker' in navigator) {
