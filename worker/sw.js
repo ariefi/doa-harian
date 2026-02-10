@@ -1,15 +1,14 @@
-const CACHE_NAME = "doa-harian-cache-1770728520";
+const CACHE_NAME = "doa-harian-cache-1770729564";
 
 const urlsToCache = [
-  "./",
-  "./index.html",
-  "./site.webmanifest",
-  "./css/style.css",
-  "./src/app/main.js",
-  "./src/ui/renderer.js",
-  "./src/data/doa.json",
-  "./icons/favicon.png",
-  "./fonts/arabic-font.ttf"
+  "index.html",
+  "site.webmanifest",
+  "css/style.css",
+  "src/app/main.js",
+  "src/ui/renderer.js",
+  "src/data/doa.json",
+  "icons/favicon.png",
+  "fonts/arabic-font.ttf"
 ];
 
 // INSTALL
