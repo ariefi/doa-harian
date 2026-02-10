@@ -1,13 +1,14 @@
-const CACHE_NAME = "doa-harian-cache-1770708338";
+const CACHE_NAME = "doa-harian-cache-1770726502";
 
 const urlsToCache = [
   "/index.html",
+  "/site.webmanifest",
   "/css/style.css",
   "/src/app/main.js",
   "/src/ui/renderer.js",
   "/src/data/doa.json",
   "/icons/favicon.png",
-  "/site.webmanifest"
+  "/fonts/arabic-font.ttf"
 ];
 
 // INSTALL
@@ -15,11 +16,13 @@ self.addEventListener("install", event => {
   self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
+      .then(cache => {
+        return cache.addAll(urlsToCache);
+      })
   );
 });
 
-// ACTIVATE (hapus cache lama)
+// ACTIVATE
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(keys =>
@@ -34,13 +37,11 @@ self.addEventListener("activate", event => {
 
 // FETCH
 self.addEventListener("fetch", event => {
-
-  // hanya handle request GET
   if (event.request.method !== "GET") return;
 
   event.respondWith(
     caches.match(event.request).then(response => {
-      return response || fetch(event.request);
+      return response || fetch(event.request).catch(() => caches.match("/index.html"));
     })
   );
 });

@@ -3,7 +3,7 @@
 ========================= */
 @font-face {
     font-family: 'ArabicFont';
-    src: url('https://static-cdn.tarteel.ai/qul/fonts/nastaleeq/Hanafi/normal-v4.2.2/with-waqf-lazmi/font.ttf') format('truetype');
+    src: url('../fonts/arabic-font.ttf') format('truetype');
     font-display: swap;
 }
 
