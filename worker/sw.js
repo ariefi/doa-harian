@@ -1,4 +1,4 @@
-const CACHE_NAME = "doa-harian-cache-1770726502";
+const CACHE_NAME = "doa-harian-cache-1770726913";
 
 const urlsToCache = [
   "/index.html",
