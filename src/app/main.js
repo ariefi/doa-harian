@@ -3,7 +3,7 @@
 ========================= */
 import { renderDoaList } from '../ui/renderer.js';
 
-fetch('../src/data/doa.json')
+fetch('src/data/doa.json')
   .then(res => res.json())
   .then(data => {
       data.sort((a, b) => a.urutan - b.urutan);
@@ -130,7 +130,7 @@ window.addEventListener('load', resetReadingTimer);
 ========================= */
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('../worker/sw.js').then(reg => {
+    navigator.serviceWorker.register('worker/sw.js').then(reg => {
 
       reg.addEventListener('updatefound', () => {
         const newWorker = reg.installing;

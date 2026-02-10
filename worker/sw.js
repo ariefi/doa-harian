@@ -1,13 +1,13 @@
-const CACHE_NAME = "doa-harian-cache-1770707551";
+const CACHE_NAME = "doa-harian-cache-1770708338";
 
 const urlsToCache = [
-  "/public/index.html",
+  "/index.html",
   "/css/style.css",
   "/src/app/main.js",
   "/src/ui/renderer.js",
   "/src/data/doa.json",
-  "/public/icons/favicon.png",
-  "/public/site.webmanifest"
+  "/icons/favicon.png",
+  "/site.webmanifest"
 ];
 
 // INSTALL
