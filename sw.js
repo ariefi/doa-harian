@@ -1,14 +1,15 @@
-const CACHE_NAME = "doa-harian-cache-1770729564";
+const CACHE_NAME = "doa-harian-cache-1770726913";
 
 const urlsToCache = [
-  "index.html",
-  "site.webmanifest",
-  "css/style.css",
-  "src/app/main.js",
-  "src/ui/renderer.js",
-  "src/data/doa.json",
-  "icons/favicon.png",
-  "fonts/arabic-font.ttf"
+  "./",
+  "./index.html",
+  "./site.webmanifest",
+  "./css/style.css",
+  "./src/app/main.js",
+  "./src/ui/renderer.js",
+  "./src/data/doa.json",
+  "./icons/favicon.png",
+  "./fonts/arabic-font.ttf"
 ];
 
 // INSTALL
@@ -41,7 +42,7 @@ self.addEventListener("fetch", event => {
 
   event.respondWith(
     caches.match(event.request).then(response => {
-      return response || fetch(event.request).catch(() => caches.match("/index.html"));
+      return response || fetch(event.request).catch(() => caches.match("./index.html"));
     })
   );
 });
